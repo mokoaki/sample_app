@@ -4,7 +4,7 @@ describe User do
 	User.destroy_all
 
 	before do
-		@user = User.new(name: "Example User", email: "user#{Time.now.usec}@example.com", password: "foobar", password_confirmation: "foobar")
+		@user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
 	end
 
 	subject { @user }
