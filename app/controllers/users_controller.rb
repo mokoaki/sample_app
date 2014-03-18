@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		#StrongParameters対応。user必須、その配下の許可リスト、みたいな
+		#StrongParameters対応。user必須でその配下の許可リスト、みたいな
 		params.require(:user).permit(:name ,:email, :password, :password_confirmation)
 	end
 end
