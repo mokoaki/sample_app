@@ -1,29 +1,29 @@
 class UsersController < ApplicationController
 	def show
-		#ƒ}ƒCƒy[ƒW params[:id]‚ðŒ³‚ÉDB‚©‚çî•ñŽæ“¾A‰æ–Ê‚Ö“n‚·
+		#ãƒžã‚¤ãƒšãƒ¼ã‚¸ params[:id]ã‚’å…ƒã«DBã‹ã‚‰æƒ…å ±å–å¾—ã€ç”»é¢ã¸æ¸¡ã™
 		@user = User.find(params[:id])
 	end
 
 	def new
-		#“o˜^‰æ–Ê‚É‚ÄŽg‚¤B’l‚ÍƒJƒ‰ƒbƒ|
+		#ç™»éŒ²ç”»é¢ã«ã¦ä½¿ã†ã€‚å€¤ã¯ã‚«ãƒ©ãƒƒãƒ
 		@user = User.new
 	end
 
 	def create
-		#“o˜^‰æ–Ê‚Å“ü—Í‚µ‚½î•ñ‚ðŒ³‚Éƒ†[ƒUì¬‚·‚é user_params‚ªŠš‚ñ‚Å‚é
+		#ç™»éŒ²ç”»é¢ã§å…¥åŠ›ã—ãŸæƒ…å ±ã‚’å…ƒã«ãƒ¦ãƒ¼ã‚¶ä½œæˆã™ã‚‹ user_paramsãŒä¸€æžšå™›ã‚“ã§ã‚‹
 		@user = User.new(user_params)
 
 		if @user.save
-			#ƒƒOƒCƒ“ˆ—
+			#ãƒ­ã‚°ã‚¤ãƒ³å‡¦ç†
 			sign_in @user
 
-			#ƒ†[ƒU“o˜^o—ˆ‚½‚æƒƒbƒZ[ƒW ‚¿‚È‚Ý‚É flash.now‚¶‚á‚È‚¢‚Ì‚Í‚±‚ÌŒãƒŠƒ_ƒCƒŒƒNƒg‚·‚é‚©‚ç
+			#ãƒ¦ãƒ¼ã‚¶ç™»éŒ²å‡ºæ¥ãŸã‚ˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ã¡ãªã¿ã« flash.nowã˜ã‚ƒãªã„ã®ã¯ã“ã®å¾Œãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã™ã‚‹ã‹ã‚‰
 			flash[:success] = "Welcome to the Sample App!"
 
-			#ƒ}ƒCƒy[ƒW‘JˆÚ
+			#ãƒžã‚¤ãƒšãƒ¼ã‚¸é·ç§»
 			redirect_to @user
 		else
-			#ƒ†[ƒUì¬Ž¸”sA“o˜^‰æ–Ê‚É–ß‚èAƒGƒ‰[ƒƒbƒZ[ƒW‚ð•\Ž¦‚·‚é
+			#ãƒ¦ãƒ¼ã‚¶ä½œæˆå¤±æ•—ã€ç™»éŒ²ç”»é¢ã«æˆ»ã‚Šã€ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹
 			render :new
 		end
 	end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		#StrongParameters‘Î‰žBuser•K{A‚»‚Ì”z‰º‚Ì‹–‰ÂƒŠƒXƒgA‚Ý‚½‚¢‚È
+		#StrongParameterså¯¾å¿œã€‚userå¿…é ˆã€ãã®é…ä¸‹ã®è¨±å¯ãƒªã‚¹ãƒˆã€ã¿ãŸã„ãª
 		params.require(:user).permit(:name ,:email, :password, :password_confirmation)
 	end
 end
