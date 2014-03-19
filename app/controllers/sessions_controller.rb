@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
       #認証されたユーザをログインさせる
       sign_in user
 
-      #マイページへ遷移
-      redirect_to user
+      #フレンドリーフォワーディング、もしくはマイページへ遷移
+      redirect_back_or user
     else
       #ユーザ認証失敗。エラーメッセージを表示する
       flash.now[:error] = 'Invalid email/password combination'
