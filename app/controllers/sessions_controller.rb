@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
 
   def create
     #ログイン画面から受け取ったメアドでユーザを検索
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(email: params[:email].downcase)
 
     #ユーザが存在している & パスワード認証OK？ この機能はUserモデル内のhas_secure_passwordによて実装されている
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:password])
       #認証されたユーザをログインさせる
       sign_in user
 
