@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   def new
     #ここで @session を用意しなくていいのはなぜ？
     #そりゃModelが存在しないから用意できないんだろうけど
+    #あとでその理由が明かされる？のか？
   end
 
   def create
