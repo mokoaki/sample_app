@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   #BCrypt関係、メアド暗号化、その認証のあたりを勝手に実装してくれるありがたい奴
   has_secure_password
 
+  has_many :microposts, dependent: :destroy
+
   #バリデート チェック、エラーメッセージ自動で作ってくれる
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence:   true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }

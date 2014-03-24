@@ -1,0 +1,7 @@
+bundle exec rake db:reset
+bundle exec rake db:populate
+bundle exec rake test:prepare
+
+bundle exec spring rspec spec
+bundle exec spring status
+bundle exec spring stop

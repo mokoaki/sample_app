@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     #マイページ params[:id]を元にDBから情報取得、画面へ渡す
     #このページは認証してないユーザにも見える。だからGETでID指定出来る。
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
