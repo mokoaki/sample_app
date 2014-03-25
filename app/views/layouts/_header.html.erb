@@ -6,7 +6,7 @@
         <ul class="nav pull-right">
           <li><%= link_to "Home",    root_path %></li>
           <li><%= link_to "Help",    help_path  %></li>
-          <li><%= link_to "GitHub", 'https://github.com/mokoaki/sample_app' %></li>
+          <li><%= link_to "GitHub", 'https://github.com/mokoaki/sample_app', target: "_blank" %></li>
 
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
