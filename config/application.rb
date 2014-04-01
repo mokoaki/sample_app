@@ -20,6 +20,7 @@ module SampleApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    #日本語の locale ファイルを作っている場合はtrueにする
     I18n.enforce_available_locales = false
 
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)

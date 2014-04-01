@@ -1,5 +1,5 @@
 SampleApp::Application.routes.draw do
-  root  'static_pages#home'
+  root 'static_pages#home'
 
   resources :users do
     member do
@@ -16,7 +16,6 @@ SampleApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
 
   match '/signup',  to: 'users#new',            via: 'get'
-
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 end
