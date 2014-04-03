@@ -13,3 +13,10 @@ def sign_in(user, options={})
     click_button "Sign in"
   end
 end
+
+#新しいマッチャを追加することも出来る（未確認）
+RSpec::Matchers.define :have_error_message do |message|
+  match do |page|
+    expect(page).to have_selector('div.alert.alert-error', text: message)
+  end
+end

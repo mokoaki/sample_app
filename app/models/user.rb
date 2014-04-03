@@ -5,9 +5,6 @@ class User < ActiveRecord::Base
   #User.create前にリメンバートークン初期値を保存する用意
   before_create :create_remember_token
 
-  #BCrypt関係、メアド暗号化、その認証のあたりを勝手に実装してくれるありがたい奴
-  has_secure_password
-
   #User は複数の Micropost を持つ。各 Micropost は自分が配下になっている user_id を持っている
   #User が削除される時、その配下の Micropost も一緒に削除される。それってdestroyの時だけ？deleteの時はどうなの？コールバック的に？
   has_many :microposts, dependent: :destroy
@@ -31,12 +28,15 @@ class User < ActiveRecord::Base
   #User は複数の followers を持つ・・が、Follower は存在しないからな？
   #followers って名前にしてるけど、その実態は 上で定義してる reverse_relationships だから気をつけろよ？
   #source: :follower は省略した。followers から follower_id を使うって推測できるだろ？
-  has_many :followers, through: :reverse_relationships
+  has_many :followers, through: :reverse_relationships #, source: :follower
 
   #バリデートチェックもしてくれるし、エラーメッセージも作ってくれる
   validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence:   true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
+
+  #BCrypt関係、メアド暗号化、その認証のあたりを勝手に実装してくれるありがたい奴
+  has_secure_password
 
   #Userで始まっているのはクラスメソッド。インスタンスメソッドではない
   def User.new_remember_token
